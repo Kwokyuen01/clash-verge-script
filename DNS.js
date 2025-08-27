@@ -158,6 +158,18 @@ const ruleProviders = {
     "url": "https://fastly.jsdelivr.net/gh/xiaolin-007/clash@main/rule/Spotify.txt",
     "path": "./ruleset/xiaolin-007/Spotify.yaml"
   },
+  "BilibiliHMT": {
+    ...ruleProviderCommon,
+    "behavior": "classical",
+    "url": "https://fastly.jsdelivr.net/gh/xiaolin-007/clash@main/rule/BilibiliHMT.txt",
+    "path": "./ruleset/xiaolin-007/BilibiliHMT.yaml"    
+  },
+  "AI": {
+    ...ruleProviderCommon,
+    "behavior": "classical",
+    "url": "https://fastly.jsdelivr.net/gh/xiaolin-007/clash@main/rule/AI.txt",
+    "path": "./ruleset/xiaolin-007/AI.yaml"    
+  },
 };
 // 规则
 const rules = [
@@ -167,10 +179,20 @@ const rules = [
   "DOMAIN-SUFFIX,xn--ngstr-lra8j.com,节点选择", // Google Play下载服务
   "DOMAIN-SUFFIX,github.io,节点选择", // Github Pages
   "DOMAIN,v2rayse.com,节点选择", // V2rayse节点工具
-
-  // 国内直连
   "DOMAIN-SUFFIX,etmchina.com,全局直连",
-
+  "DOMAIN-SUFFIX,doc2x.noedgeai.com,全局直连",
+  "DOMAIN-SUFFIX,mineru.net ,全局直连",
+  "DOMAIN-SUFFIX,cz.gxrc.com ,全局直连",
+  "DOMAIN-SUFFIX,gxrc.org ,全局直连",
+  "DOMAIN-SUFFIX,gxu.edu.cn ,全局直连",
+  "DOMAIN-SUFFIX,discussionschinese.apple.com,全局直连",
+  "DOMAIN-SUFFIX,kookeey.com ,全局直连",
+  "DOMAIN-SUFFIX,saduck.top  ,全局直连",
+//  "DOMAIN-SUFFIX,mineru.net ,全局直连",
+//  "DOMAIN-SUFFIX,mineru.net ,全局直连",
+//  "DOMAIN-SUFFIX,mineru.net ,全局直连",
+//  "DOMAIN-SUFFIX,mineru.net ,全局直连",
+  
   // Loyalsoldier 规则集
   "RULE-SET,applications,全局直连",
   "RULE-SET,private,全局直连",
@@ -181,6 +203,8 @@ const rules = [
   "RULE-SET,Netflix,Netflix",
   "RULE-SET,bahamut,动画疯",
   "RULE-SET,Spotify,Spotify",
+  "RULE-SET,BilibiliHMT,哔哩哔哩港澳台",
+  "RULE-SET,AI,AI",
   "RULE-SET,google,谷歌服务",
   "RULE-SET,proxy,节点选择",
   "RULE-SET,gfw,节点选择",
@@ -225,6 +249,7 @@ function main(config) {
       "type": "select",
       "proxies": ["延迟选优", "故障转移"],
       "include-all": true,
+      "filter": "^(?!.*(官网|套餐|流量|异常|剩余)).*$",
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg"
     },
     {
@@ -234,6 +259,7 @@ function main(config) {
       "interval":120,
       "tolerance": 200,
       "include-all": true,
+      "filter": "^(?!.*(官网|套餐|流量|异常|剩余)).*$",
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/speed.svg"
     },
     {
@@ -241,6 +267,7 @@ function main(config) {
       "name": "故障转移",
       "type": "fallback",
       "include-all": true,
+      "filter": "^(?!.*(官网|套餐|流量|异常|剩余)).*$",
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/ambulance.svg"
     },
     {
@@ -277,7 +304,7 @@ function main(config) {
     },
     {
       ...groupBaseOption,
-      "name": "ChatGPT",
+      "name": "AI",
       "type": "select",
       "include-all": true,
       "proxies": ["节点选择", "延迟选优", "故障转移"],
@@ -306,7 +333,16 @@ function main(config) {
       "proxies": ["节点选择"],
       "include-all": true,
       "filter": "(?i)台|tw|TW",
-      "icon": "https://fastly.jsdelivr.net/gh/xiaolin-007/clash@main/icon/bahamut.svg"
+      "icon": "https://fastly.jsdelivr.net/gh/xiaolin-007/clash@main/icon/Bahamut.svg"
+    },
+    {
+      ...groupBaseOption,
+      "name": "哔哩哔哩港澳台",
+      "type": "select",
+      "proxies": ["全局直连", "节点选择","延迟选优", "故障转移"],
+      "include-all": true,
+      "filter": "^(?!.*(官网|套餐|流量|异常|剩余)).*$",
+      "icon": "https://fastly.jsdelivr.net/gh/xiaolin-007/clash@main/icon/bilibili.svg"
     },
     {
       ...groupBaseOption,
@@ -344,6 +380,7 @@ function main(config) {
       "type": "select",
       "proxies": ["节点选择", "延迟选优", "故障转移","全局直连"],
       "include-all": true,
+      "filter": "^(?!.*(官网|套餐|流量|异常|剩余)).*$",
       "icon": "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg"
     }
   ];
@@ -351,11 +388,16 @@ function main(config) {
   // 覆盖原配置中的规则
   config["rule-providers"] = ruleProviders;
   config["rules"] = rules;
-  config["proxies"].forEach(proxy => {
-    // 为每个节点设置 udp = true
-    proxy.udp = true
+// 添加判断
+  if(config["proxies"]) {
+    config["proxies"].forEach(proxy => {
+      // 为每个节点设置 udp = true
+      proxy.udp = true
 
-  })
+    })
+  }
   // 返回修改后的配置
   return config;
+
 }
+
