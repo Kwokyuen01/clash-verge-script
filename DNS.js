@@ -179,15 +179,15 @@ const rules = [
   "DOMAIN-SUFFIX,xn--ngstr-lra8j.com,节点选择", // Google Play下载服务
   "DOMAIN-SUFFIX,github.io,节点选择", // Github Pages
   "DOMAIN,v2rayse.com,节点选择", // V2rayse节点工具
-  "DOMAIN-SUFFIX,etmchina.com,全局直连",
-  "DOMAIN-SUFFIX,doc2x.noedgeai.com,全局直连",
-  "DOMAIN-SUFFIX,mineru.net ,全局直连",
-  "DOMAIN-SUFFIX,cz.gxrc.com ,全局直连",
-  "DOMAIN-SUFFIX,gxrc.org ,全局直连",
-  "DOMAIN-SUFFIX,gxu.edu.cn ,全局直连",
-  "DOMAIN-SUFFIX,discussionschinese.apple.com,全局直连",
-  "DOMAIN-SUFFIX,kookeey.com ,全局直连",
-  "DOMAIN-SUFFIX,saduck.top  ,全局直连",
+  // "DOMAIN-SUFFIX,etmchina.com,全局直连",
+  // "DOMAIN-SUFFIX,doc2x.noedgeai.com,全局直连",
+  // "DOMAIN-SUFFIX,mineru.net ,全局直连",
+  // "DOMAIN-SUFFIX,cz.gxrc.com ,全局直连",
+  // "DOMAIN-SUFFIX,gxrc.org ,全局直连",
+  // "DOMAIN-SUFFIX,gxu.edu.cn ,全局直连",
+  // "DOMAIN-SUFFIX,discussionschinese.apple.com,全局直连",
+  // "DOMAIN-SUFFIX,kookeey.com ,全局直连",
+  // "DOMAIN-SUFFIX,saduck.top  ,全局直连",
 //  "DOMAIN-SUFFIX,mineru.net ,全局直连",
 //  "DOMAIN-SUFFIX,mineru.net ,全局直连",
 //  "DOMAIN-SUFFIX,mineru.net ,全局直连",
@@ -210,13 +210,17 @@ const rules = [
   "RULE-SET,gfw,节点选择",
   "RULE-SET,tld-not-cn,节点选择",
   "RULE-SET,direct,全局直连",
-  "RULE-SET,lancidr,全局直连,no-resolve",
-  "RULE-SET,cncidr,全局直连,no-resolve",
+  "RULE-SET,lancidr,全局直连",
+  "RULE-SET,cncidr,全局直连",
+  // "RULE-SET,lancidr,全局直连,no-resolve",
+  // "RULE-SET,cncidr,全局直连,no-resolve",
   "RULE-SET,telegramcidr,电报消息,no-resolve",
   // 其他规则
   "GEOSITE,CN,全局直连",
-  "GEOIP,LAN,全局直连,no-resolve",
-  "GEOIP,CN,全局直连,no-resolve",
+  "GEOIP,LAN,全局直连",
+  "GEOIP,CN,全局直连",
+  // "GEOIP,LAN,全局直连,no-resolve",
+  // "GEOIP,CN,全局直连,no-resolve",
   "MATCH,漏网之鱼"
 ];
 // 代理组通用配置
