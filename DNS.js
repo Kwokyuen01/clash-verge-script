@@ -1,13 +1,14 @@
 // 国内DNS服务器
 const domesticNameservers = [
   "https://223.5.5.5/dns-query", // 阿里DoH
-  "https://doh.pub/dns-query" // 腾讯DoH
+  // "https://doh.pub/dns-query" // 腾讯DoH
+  "https://1.12.12.12/dns-query"
 ];
 // 国外DNS服务器
 const foreignNameservers = [
-  "https://208.67.222.222/dns-query", // OpenDNS
-  "https://77.88.8.8/dns-query", //YandexDNS
-  "https://1.1.1.1/dns-query", // CloudflareDNS
+  // "https://208.67.222.222/dns-query", // OpenDNS
+  // "https://77.88.8.8/dns-query", //YandexDNS
+  // "https://1.1.1.1/dns-query", // CloudflareDNS
   "https://8.8.4.4/dns-query", // GoogleDNS  
 
 ];
@@ -45,7 +46,8 @@ const dnsConfig = {
   "nameserver": [...foreignNameservers],
   "proxy-server-nameserver":[...domesticNameservers],
   "nameserver-policy": {
-  "geosite:private,cn": domesticNameservers
+  "geosite:cn,apple,private": domesticNameservers
+  // "geosite:private,cn": domesticNameservers
   }
 };
 // 规则集通用配置
