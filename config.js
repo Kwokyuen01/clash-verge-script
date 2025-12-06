@@ -85,9 +85,7 @@ const rules = [
 // 地区列表 (正则匹配顺序执行，最后的 OT小众地区 为兜底)
 const regionDefinitions = [
   { name: 'HK香港', regex: /港|🇭🇰|hk|hongkong|hong kong/i, icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png' },
-  // 增加了 ^ 符号，强制从头匹配，确保排除逻辑生效
   { name: 'US美国', regex: /^(?!.*aus|.*速度慢|.*手动选)(?=.*(美|🇺🇸|us(?!t)|usa|american|united states)).*/i, icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png' },
-  // { name: 'US美国', regex: /(?!.*aus|.*速度慢)(?=.*(美|🇺🇸|us(?!t)|usa|american|united states)).*/i, icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png' },
   { name: 'JP日本', regex: /日本|🇯🇵|jp|japan/i, icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png' },
   { name: 'KR韩国', regex: /韩|🇰🇷|kr|korea/i, icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png' },
   { name: 'SG新加坡', regex: /新加坡|🇸🇬|sg|singapore/i, icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png' },
