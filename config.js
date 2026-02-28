@@ -50,7 +50,7 @@ const foreignNameservers = [
 const dnsConfig = {
   "enable": true,
   "listen": "0.0.0.0:1053",
-  "ipv6": false,
+  "ipv6": true,
   "prefer-h3": false,
   "respect-rules": true,
   "use-system-hosts": false,
@@ -60,7 +60,7 @@ const dnsConfig = {
   "fake-ip-filter": [
     "+.lan", "+.local", "+.msftconnecttest.com", "+.msftncsi.com",
     "localhost.ptlogin2.qq.com", "localhost.sec.qq.com",
-    "+.in-addr.arpa", "+.ip6.arpa", "time.*.com", "time.*.gov",
+    "+.in-addr.arpa", "+.ip6.arpa", "time.*.com", "time.*.gov","+.7825789.xyz",
     "pool.ntp.org", "localhost.work.weixin.qq.com"
   ],
   "default-nameserver": ["223.5.5.5", "1.2.4.8"],
@@ -79,6 +79,8 @@ const rules = [
   'PROCESS-NAME,SunloginClient,DIRECT', 'PROCESS-NAME,SunloginClient.exe,DIRECT',
   'PROCESS-NAME,AnyDesk,DIRECT', 'PROCESS-NAME,AnyDesk.exe,DIRECT',
   'PROCESS-NAME,节点小宝,DIRECT', 'PROCESS-NAME,nblink.exe,DIRECT',
+  'DOMAIN-SUFFIX,7825789.xyz,DIRECT',
+  'DOMAIN-SUFFIX,linux.do,HK香港',
   'DOMAIN-SUFFIX,iepose.com,DIRECT', 'DOMAIN-SUFFIX,ionewu.com,DIRECT',
 ];
 
@@ -355,12 +357,27 @@ function main(config) {
     url: 'http://wifi.vivo.com.cn/generate_204',
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/StreamingCN.png',
   });
-
+  // 把新加坡地区组提到“默认节点”后面显示
+  const sgNames = new Set(['SG新加坡', 'SG新加坡-高倍率', 'SG新加坡-极高倍率']);
+  const sgRegionGroups = generatedRegionGroups.filter(g => sgNames.has(g.name));
+  const otherRegionGroups = generatedRegionGroups.filter(g => !sgNames.has(g.name));
+  // config['proxy-groups'] = [
+  //   ...functionalGroups,
+  //   ...generatedRegionGroups
+  // ];
   config['proxy-groups'] = [
-    ...functionalGroups,
-    ...generatedRegionGroups
-  ];
+    // functionalGroups 的第一个就是 “默认节点”
+    functionalGroups[0],
 
+    // 插入 SG 地区组（有就插，没有就为空数组，不影响）
+    ...sgRegionGroups,
+
+    // 其余功能组照旧
+    ...functionalGroups.slice(1),
+
+    // 其他地区组排后面
+    ...otherRegionGroups,
+  ];
   config['rules'] = rules;
   config['rule-providers'] = ruleProviders;
 
