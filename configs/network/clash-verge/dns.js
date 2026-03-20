@@ -1,3 +1,9 @@
+// Canonical path: configs/network/clash-verge/dns.js
+// Purpose: DNS anti-leak variant for Clash Verge style script injection.
+// Maintenance boundary:
+// - This file is kept separate from config.js to make DNS tuning independently reviewable.
+// - Provider URLs can be public, but machine-private credentials must stay out of Git.
+
 // 国内DNS服务器
 const domesticNameservers = [
   "https://223.5.5.5/dns-query", // 阿里DoH

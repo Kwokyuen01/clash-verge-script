@@ -1,3 +1,10 @@
+// Canonical path: configs/network/clash-verge/config.js
+// Purpose: Clash Verge Rev / Mihomo Party main script kept as a reusable source file.
+// Maintenance boundary:
+// - Keep shared logic here, not in ad-hoc root-level files.
+// - Do not commit machine-private tokens or subscription secrets.
+// - After repository rename or path changes, refresh raw URLs with scripts/Get-ConfigUrls.ps1.
+
 // 1. 静态配置区域
 
 const enable = true;

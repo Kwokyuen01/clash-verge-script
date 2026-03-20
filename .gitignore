@@ -1,0 +1,19 @@
+# OS / explorer noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor / IDE state
+.idea/
+.vscode/
+
+# Temporary outputs
+*.bak
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Local working directories
+exports/
+local/

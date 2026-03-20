@@ -1,3 +1,8 @@
+# Canonical path: configs/network/mihomo/config.yaml
+# Purpose: full Mihomo YAML configuration snapshot kept as a portable source file.
+# Maintenance boundary:
+# - Commit only hand-maintained source content.
+# - Do not commit runtime cache, downloaded ruleset artifacts, or local-only secrets.
 
 dns:
   enable: true 
