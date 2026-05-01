@@ -356,8 +356,8 @@ const buildProxyGroups = ({
     "GLOBAL",
     "select",[
       ...(allNames.length ? ["main", "All"] : []),
-      ...(aiNames.length ? ["AI"] :[]),
-      ...(allNames.length ? ["TG"] :[]),
+      ...(aiNames.length ? ["ai"] :[]),
+      ...(allNames.length ? ["tg"] :[]),
       ...regionEntries,
       ...(otherProxyNames.length ? ["Other"] : []),
       ...(infoNames.length ? ["info"] :[])
