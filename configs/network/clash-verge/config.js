@@ -86,7 +86,6 @@ const rules = [
   'PROCESS-NAME,SunloginClient,DIRECT', 'PROCESS-NAME,SunloginClient.exe,DIRECT',
   'PROCESS-NAME,AnyDesk,DIRECT', 'PROCESS-NAME,AnyDesk.exe,DIRECT',
   'PROCESS-NAME,节点小宝,DIRECT', 'PROCESS-NAME,nblink.exe,DIRECT',
-  'DOMAIN-SUFFIX,7825789.xyz,DIRECT',
   'DOMAIN-SUFFIX,linux.do,HK香港',
   'DOMAIN-SUFFIX,iepose.com,DIRECT', 'DOMAIN-SUFFIX,ionewu.com,DIRECT',
 ];
